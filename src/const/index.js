@@ -73,7 +73,7 @@ export let sidebarItem = [
           {
             id: 1,
             link: "Algun genero",
-            path: "genre/28"
+            path: "/genre/28"
           },
         ]
       },

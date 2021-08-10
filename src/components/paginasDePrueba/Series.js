@@ -1,9 +1,11 @@
 import React from 'react'
+import { Title } from '../common/Title'
 
 export const Series = () => {
     return (
         <div>
-            Series
+            <h1>Series</h1>
+            <Title />
         </div>
     )
 }
