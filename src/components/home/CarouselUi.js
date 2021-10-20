@@ -19,26 +19,27 @@ export const CarouselUi = () => {
     speed: 500,
   };
 
-  const {films, loading } = useSelector(state => state.data)
+  const {dataCarousel, loading } = useSelector(state => state.data)
+
+  let films = dataCarousel.filter( (data) => data.background !== null );
 
   return (
       <div style={{ padding: '0px 25px' }}>
         <Slider {...settings}>
+
         {
           loading !== true &&
 
-          films.allData.map( film => (
+          films.map( film => (
               <ImageListItem key={film.id} style={{ margin: 7 }} >
                   <ImageUi
-                      title={ film.title } 
-                      background={ film.background }
+                      {...film}
                       key={film.key} 
                       />
               </ImageListItem> 
           ))
-        }          
+        }   
         </Slider>
       </div>
-    );
-  
+    ); 
 }

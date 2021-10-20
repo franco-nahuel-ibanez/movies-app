@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { BrowserRouter as Router } from 'react-router-dom'
 import { AppRouter } from '../../routes/AppRouter';
 import { makeStyles } from '@material-ui/core/styles';
 import { DrawerUi } from '../sidebar/DrawerUi';
@@ -23,13 +22,14 @@ export const Main = () => {
     const classes = useStyles()
     
     return (
-        <Router>
+        // <Router>
+        <>
             <DrawerUi />
-
             <div className={ classes.content }>
                 <AppRouter />
 
             </div>
-        </Router>
+        </>
+        // </Router>
     )
 }

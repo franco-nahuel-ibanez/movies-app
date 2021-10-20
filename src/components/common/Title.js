@@ -23,7 +23,6 @@ export const Title = () => {
             title = "Lista de Series mas valoradas"
             break;
 
-
         case ( film === "genre" ):
             title = "Lista de Series mas valoradas"
         break;
@@ -36,9 +35,6 @@ export const Title = () => {
             break
     }
     
-
-    console.log( film, busqueda )
-
     return (
         <div>
             <h1>{ title }</h1>

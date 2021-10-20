@@ -25,6 +25,7 @@ const useStyles = makeStyles( (theme) => ({
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.enteringScreen,
         }),
+        background: theme.palette.primary.main,
     },
     drawerClose: {
         transition: theme.transitions.create('width', {
@@ -36,6 +37,7 @@ const useStyles = makeStyles( (theme) => ({
         [theme.breakpoints.up('sm')]: {
           width: theme.spacing(9) + 1,
         },
+        background: theme.palette.primary.main,
     },
     toolbar: {
       display: 'flex',
@@ -75,7 +77,7 @@ export const DrawerUi = () => {
             }}
         >
             <div className={classes.toolbar}>
-                <IconButton onClick={handleDrawerClose}>
+                <IconButton onClick={handleDrawerClose} color="secondary">
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
             </div>

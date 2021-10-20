@@ -15,11 +15,11 @@ import { CustomLink } from "./CustomLink";
 const UseStyles = makeStyles((theme) => ({
   root: {
     width: drawerWidth,
-    // maxWidth: 360,
-    background: theme.palette.background.paper
+    background: theme.palette.primary.main,
+    color: theme.palette.secondary.main
   },
   iconStyle: {
-    paddingRight: theme.spacing(2) * 4
+    paddingRight: theme.spacing(2) * 4,
   }
 }));
 
@@ -32,7 +32,6 @@ export const ListItemUi = () => {
 
   const handleClick = (e) => {
     setState({ [e]: !state[e] })
-    console.log(state)
   }
 
   return (
@@ -42,6 +41,7 @@ export const ListItemUi = () => {
           <List
             className={classes.root}
             key={list.id}
+            color="secondary"
           >
             {list.route.map((item) => {
               return (
@@ -52,15 +52,17 @@ export const ListItemUi = () => {
                         button
                         key={item.id}
                         onClick={() => { handleClick(item.link) }}
-                        >
-                        <Icon className={ classes.iconStyle }>{ iconsSidebar[i] }</Icon>
+                        color="secondary"
+                      >
+                        <Icon className={ classes.iconStyle } color="secondary">{ iconsSidebar[i] }</Icon>
                         <ListItemText
                           primary={item.link}
+                          color="secondary"
                         />
                         {state[item.link] ? (
-                          <ExpandLess />
+                          <ExpandLess color="secondary"/>
                         ) : (
-                          <ExpandMore />
+                          <ExpandMore color="secondary"/>
                         )}
                       </ListItem>
                       <Collapse
@@ -69,8 +71,10 @@ export const ListItemUi = () => {
                         in={state[item.link]}
                         timeout="auto"
                         unmountOnExit
+                        color="secondary"
                       >
-                        <List disablePadding>
+                        {/* subitems */}
+                        <List disablePadding color="secondary">
                           {item.subitems.map(
                             sitem => {
                               return (
@@ -79,6 +83,7 @@ export const ListItemUi = () => {
                                   to={sitem.path}
                                   id={sitem.id}
                                   key={sitem.id}
+                                  color="secondary"
                                 />
                               );
                             }
@@ -92,6 +97,7 @@ export const ListItemUi = () => {
                       to={item.path}
                       icon={ iconsSidebar[i] }
                       id={item.id}
+                      color="secondary"
                     />
                   )}
                 </div>

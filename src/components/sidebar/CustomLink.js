@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@material-ui/core';
 
 const UseStyles = makeStyles((theme) => ({
+  root: {
+    color: theme.palette.secondary.main
+  },
   iconStyle: {
     paddingRight: theme.spacing(2) * 4,
+
   }
 }));
 
@@ -28,10 +32,10 @@ export const CustomLink = ({ primary, icon, to, id }) => {
       <ListItem
         button 
         key={id} 
-        component={CustomLink}
-        >
-        <Icon className={ classes.iconStyle }>{icon}</Icon>
-            <ListItemText primary={primary} />
+        component={CustomLink}  
+      >
+        <Icon className={ classes.iconStyle } color="secondary">{icon}</Icon>
+            <ListItemText primary={primary} className={ classes.root }/>
       </ListItem>
     </li>
   );

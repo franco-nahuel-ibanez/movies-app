@@ -27,11 +27,11 @@ const useStyles = makeStyles({
   }
 });
 
-export const CardUi = ({ title, poster, name, id, type }) => {
+export const CardResults = ({ title, poster, name, id, type, handleCloseModal }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={ () => handleCloseModal() }>
       <CardActionArea>
       <Link 
         to={`/detail/${type}/${id}`}
@@ -46,19 +46,6 @@ export const CardUi = ({ title, poster, name, id, type }) => {
           title="Contemplative Reptile"
         />
         <CardContent>
-          {/* <div style={{ width: 200, whiteSpace: 'nowrap' }}>
-            <Box
-              component="div"
-              textOverflow="ellipsis"
-              overflow="hidden"
-              className={ classes.title }
-              bgcolor="background.paper"
-            >
-              { title ? title : name }
-                          
-            </Box>
-          </div> */}
-
           <Typography variant="subtitle1" noWrap={true} className={ classes.title }  >
             { title ? title : name }
           </Typography>
