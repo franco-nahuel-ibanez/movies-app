@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     search: {
+        display: 'flex',
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),

@@ -10,13 +10,28 @@ export const CarouselUi = () => {
     className: "center",
     centerMode: true,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     centerPadding: "60px",
     slidesToShow: 2,
     slidesToScrool: 1,
     cssEase: "linear",
     speed: 500,
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false
+        }
+      }
+    ]
   };
 
   const {dataCarousel, loading } = useSelector(state => state.data)

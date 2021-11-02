@@ -16,16 +16,23 @@ import { ListItemUi } from './ListItemUi';
 const useStyles = makeStyles( (theme) => ({
     drawer: {
         width: drawerWidth,
+        // width: '100%',
         flexShrink: 0,
         whiteSpace: 'nowrap',
+        [theme.breakpoints.down('sm')]: {
+            position: 'fixed',
+            zIndex: 1000
+        }
     },
     drawerOpen: {
-        width: drawerWidth,
+        // width: drawerWidth,
+        width: 240,
         transition: theme.transitions.create('width', {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.enteringScreen,
         }),
         background: theme.palette.primary.main,
+    
     },
     drawerClose: {
         transition: theme.transitions.create('width', {
@@ -36,6 +43,9 @@ const useStyles = makeStyles( (theme) => ({
         width: theme.spacing(7) + 1,
         [theme.breakpoints.up('sm')]: {
           width: theme.spacing(9) + 1,
+        },
+        [theme.breakpoints.down('sm')]: {
+          width: 0,
         },
         background: theme.palette.primary.main,
     },

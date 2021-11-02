@@ -1,18 +1,30 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Box, Divider, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-export const Title = () => {
-    
-    let { film, busqueda } = useParams()
+
+const useStyles = makeStyles( (theme) => ({
+
+    root:{
+        [theme.breakpoints.up('md')] :{ fontSize: "3rem" },
+        [theme.breakpoints.down('sm')] :{ fontSize: "2rem" },
+        [theme.breakpoints.down('xs')] :{ fontSize: "1.5rem" }
+    }
+}));
+
+
+export const Title = ({film, busqueda}) => {
+
+    const classes = useStyles()
+
     let title = "Todas las peliculas y series"
-
     switch ( true ) {
         case ( (film === "movie" && busqueda === "popular") ):
             title = "Lista de Peliculas Populares"
             break;
 
         case ( film === "movie" && busqueda === "top_rated" ):
-            title = "Lista de Peliculas mas valoradas"
+            title = "Lista de Peliculas mejores valoradas"
             break;
 
         case ( film === "tv" && busqueda === "popular" ):
@@ -27,8 +39,12 @@ export const Title = () => {
             title = "Lista de Series mas valoradas"
         break;
 
-        case ( film !== undefined && busqueda === undefined ):
-            title = `Lista completa de ${film}`
+        case ( film === "tv" && busqueda === undefined ):
+            title = `Lista completa de series`
+            break;
+
+        case ( film === 'movie' && busqueda === undefined ):
+            title = `Lista completa de peliculas`
             break;
 
         default:
@@ -36,8 +52,20 @@ export const Title = () => {
     }
     
     return (
-        <div>
-            <h1>{ title }</h1>
-        </div>
+        <>
+
+            <Box py={3} >
+                <Typography
+                    variant="h3"
+                    align="center"
+                    className={ classes.root }
+                >
+                    {title}
+                </Typography>
+            </Box>
+            <Box pb={3}>
+                <Divider />
+            </Box>
+        </>
     )
 }

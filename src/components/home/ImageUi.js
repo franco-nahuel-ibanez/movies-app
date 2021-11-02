@@ -10,10 +10,12 @@ const useStyles = makeStyles({
         margin: 7
     },
     image: {
-        width: '100%'
+        width: '100%',
+        minHeight: '133px'
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
+        maxHeight: '30%'
     },
 });
 

@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getTopRatedAndPopular } from '../../stateManagement/actions/dataAction';
 import { GridContainer } from '../common/GridContainer';
+import { LoadingUi } from '../common/LoadingUi';
 import { PaginationUi } from '../common/PaginationUi';
 import { Title } from '../common/Title';
 
+
 export const TopRatedAndPopular = () => {
 
-    const location = useLocation()
+    const location = useLocation();
 
     const [ , film, search ] = location.pathname.split('/')
 
-    const {page} = useSelector(state => state.data)
+    const {page, loading} = useSelector(state => state.data)
 
     const dispatch = useDispatch()
 
@@ -22,15 +24,20 @@ export const TopRatedAndPopular = () => {
     
     }, [ film, search, page, dispatch ])
 
-    console.log(film, search)
+    
     return (
         <>
-            <Title />
-
-            <GridContainer />
-
-            <PaginationUi />
+            {
+                loading ?
+                    <LoadingUi />
+                :
+                    <>
+                        <Title film={film} busqueda={search}/>
+                        <GridContainer />
+                    </>
+            }
             
+            <PaginationUi />
         </>
     )
 }
